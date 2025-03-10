@@ -1,0 +1,134 @@
+/* Basic Styling */
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #02284f;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Dict logo styling*/
+#logo{
+    margin-left: 70px;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+/*page title*/
+#registration_word{
+        margin-left: 90px;
+        font-weight: bold;
+}
+
+/* Login Container Styling */
+.Log_in_Container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+/*first name styling */
+#firstname{
+    margin-top: 20px;
+    font-size: 12px;
+    font-weight: bold;
+
+}
+/*from last name to confirm password title styling*/
+#lastname{
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/*all input box styling*/
+input {
+    width: 92%;
+    padding: 10px;
+    border: 1px solid #02284f;
+    border-radius: 4px;
+    font-size: 16px;
+}
+/*error massage below the input box */
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+/*button register styling */
+button {
+    background-color: #02284f;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 30%;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-left: 110px;
+    font-size: 12px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: blue;
+}
+
+/*log in class*/
+.login{
+    text-align: center;
+    font-size:12px ;
+    margin-top: 10px;
+}
+/*log in text button styling*/
+#LOGIN_btn{
+    color: blue;
+    margin-left: 2px;
+}
+.blurred{
+    filter:blur(2px);
+    pointer-events: none;
+}
+.popup{
+    width: 200px;
+    height: 240px;
+    background: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 0 20px 20px;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.popup img{
+    width: 80px;
+    margin-top: -50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+}
+.popup h2{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 20px 0 10px;
+}
+#btn_ok{
+    width: 20%;
+    margin-top: 20px;
+    padding: 5px 0;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    margin-left: 0%;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}

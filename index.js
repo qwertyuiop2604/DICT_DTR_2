@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 // Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAWnrqJZ3ih5ZVwm8kmTW6VPW1WHzuSe98",
@@ -17,7 +17,6 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 console.log("Firebase initialized successfully!");
-
 
 // Ensure script runs after DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
