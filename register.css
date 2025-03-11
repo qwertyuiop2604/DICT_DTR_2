@@ -95,6 +95,7 @@ button:hover {
     pointer-events: none;
 }
 .popup{
+    display: none;
     width: 200px;
     height: 240px;
     background: #fff;
