@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 // Firebase configuration
 const firebaseConfig = {
@@ -16,7 +16,18 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+const popup = document.querySelector('.popup_error');
+const loginContainer = document.querySelector('.login-container');  // The login form
+const btn_ok = document.getElementById('btn_ok');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const registrationLink = document.getElementById('registration');
+
+
 console.log("Firebase initialized successfully!");
+
+ // Initially hide the popup container
+ popup.style.display = 'none';
 
 // Ensure script runs after DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
@@ -51,10 +62,19 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isValid) {
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    // Successful login
-                    alert("Login successful!");
-                    console.log("User logged in:", userCredential.user);
-                    window.location.href = "dashboard.html"; // Redirect to another page
+                    const user = userCredential.user;
+
+                    // Check if email is verified
+                    if (user.emailVerified) {
+                        // Successful login and email is verified
+                        alert("Login successful!");
+                        console.log("User logged in:", user);
+                        window.location.href = "dash.html"; // Redirect to dashboard
+                    } else {
+                        // Email is not verified, show a notification
+                        loginContainer.classList.add('blurred');
+                        popup.style.display = 'block';
+                    }
                 })
                 .catch((error) => {
                     console.error("Login failed:", error.message);
@@ -70,4 +90,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
         }
     });
+
+      // Handle registration link click
+      registrationLink.addEventListener('click', () => {
+        window.location.href = 'register.html'; // Redirect to the register page
+    });
+
+    btn_ok.addEventListener('click', () => {
+        loginContainer.classList.remove('blurred');
+        popup.style.display = 'none';
+        emailInput.value = '';  // Clear email input
+        passwordInput.value = '';  // Clear password input
+    });
+
 });

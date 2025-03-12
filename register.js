@@ -94,7 +94,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Event listeners for buttons
-    Login.addEventListener('click', () => alert("Going to login page"));
+    Login.addEventListener('click', () => {
+        window.location.href = 'index.html'; // Redirect to the register page
+    });
+
     btn_ok.addEventListener('click', () => {
         registrationForm.classList.remove('blurred');
         popup.style.display = 'none';

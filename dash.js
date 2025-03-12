@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
 // Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAWnrqJZ3ih5ZVwm8kmTW6VPW1WHzuSe98",
@@ -18,19 +19,24 @@ const db = getFirestore(app);
 
 console.log("Firebase initialized successfully!");
 
+// Function to record time
 function recordTime(type) {
     const name = document.getElementById('name').value.trim();
+    const employeeNumber = document.getElementById('employeeNumber').value.trim();
     
-    if (!name ) {
-       
+    if (!name || !employeeNumber) {
+        alert('Please enter both your name and employee number before proceeding.');
         return;
     }
+
     const now = new Date();
     const timeString = now.toLocaleString();
+    
     let logData = localStorage.getItem('timeLog');
     logData = logData ? JSON.parse(logData) : [];
-    logData.push({ name, action: type.toUpperCase(), time: timeString });
+    logData.push({ name, employeeNumber, action: type.toUpperCase(), time: timeString });
     localStorage.setItem('timeLog', JSON.stringify(logData));
+
     displayLog();
     showModal(`${type.toUpperCase()} RECORDED AT: ${timeString}`);
 }
@@ -42,6 +48,7 @@ function showModal(message) {
     document.getElementById('modalMessage').innerText = message;
     document.getElementById('timeModal').style.display = 'block';
 }
+
 function closeModal() {
     document.getElementById('timeModal').style.display = 'none';
 }
@@ -52,17 +59,20 @@ window.closeModal = closeModal;
 function displayLog() {
     let logData = localStorage.getItem('timeLog');
     logData = logData ? JSON.parse(logData) : [];
+
     if (logData.length === 0) {
         document.getElementById('log').innerText = "No records yet";
         return;
     }
+
     let logHTML = "";
     logData.forEach((entry, index) => {
-        logHTML += `<div><strong>${index + 1}. ${entry.name}</strong> - ${entry.action}: ${entry.time}</div>`;
-
+        logHTML += `<div><strong>${index + 1}. ${entry.name} (ID: ${entry.employeeNumber})</strong> - ${entry.action}: ${entry.time}</div>`;
     });
+
     document.getElementById('log').innerHTML = logHTML;
 }
+
 window.onload = displayLog;
 
 function clearLog() {
@@ -72,8 +82,11 @@ function clearLog() {
     }
 }
 
-document.querySelector(".dropdown-btn").addEventListener("click", function () {
-this.parentElement.classList.toggle("active");
+// Dropdown button event listener
+document.querySelectorAll(".dropdown-btn").forEach((btn) => {
+    btn.addEventListener("click", function () {
+        this.parentElement.classList.toggle("active");
+    });
 });
 
 // Function to handle export
@@ -89,7 +102,6 @@ function exportFile(format) {
 // Expose function globally
 window.exportFile = exportFile;
 
-
 function exportToExcel() {
     let logData = localStorage.getItem('timeLog');
     logData = logData ? JSON.parse(logData) : [];
@@ -99,9 +111,9 @@ function exportToExcel() {
         return;
     }
 
-    let csvContent = "data:text/csv;charset=utf-8,No.,Name,Action,Time\n";
+    let csvContent = "data:text/csv;charset=utf-8,No.,Name,Employee Number,Action,Time\n";
     logData.forEach((entry, index) => {
-        csvContent += `${index + 1},${entry.name},${entry.action},${entry.time}\n`;
+        csvContent += `${index + 1},${entry.name},${entry.employeeNumber},${entry.action},${entry.time}\n`;
     });
 
     const encodedUri = encodeURI(csvContent);
@@ -114,35 +126,36 @@ function exportToExcel() {
 }
 
 function exportToPDF() {
-const { jsPDF } = window.jspdf;
-const doc = new jsPDF();
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
-let logData = localStorage.getItem('timeLog');
-logData = logData ? JSON.parse(logData) : [];
+    let logData = localStorage.getItem('timeLog');
+    logData = logData ? JSON.parse(logData) : [];
 
-if (logData.length === 0) {
-alert("No records to export.");
-return;
-}
+    if (logData.length === 0) {
+        alert("No records to export.");
+        return;
+    }
 
-// Load image from local storage (or base64 if needed)
-const img = new Image();
-img.src = "/images/logo_dict.png"; // Ensure the image is accessible
+    // Load image from local storage (or base64 if needed)
+    const img = new Image();
+    img.src = "/images/logo.png"; // Ensure the image is accessible
 
-img.onload = function () {
-doc.addImage(img, 'PNG', 10, 10, 40, 20); // Adjust position & size
-doc.text("Daily Time Record", 80, 20);
-doc.line(10, 25, 200, 25); // Underline
+    img.onload = function () {
+        doc.addImage(img, 'PNG', 10, 10, 40, 20);
+        doc.text("Daily Time Record", 80, 20);
+        doc.line(10, 25, 200, 25);
 
-let y = 40;
-logData.forEach((entry, index) => {
-    doc.text(`${index + 1}. ${entry.name}  | ${entry.action} | ${entry.time}`, 10, y);
+        let y = 40;
+        logData.forEach((entry, index) => {
+            doc.text(`${index + 1}. ${entry.name} | ${entry.employeeNumber} | ${entry.action} | ${entry.time}`, 10, y);
             y += 7;
-});
+        });
 
-doc.save("TimeLog.pdf");
-};
+        doc.save("TimeLog.pdf");
+    };
 }
+
 // Function to fetch user data from Firestore
 async function fetchUserData(userId) {
     try {
@@ -162,5 +175,3 @@ async function fetchUserData(userId) {
         console.error("Error fetching user data:", error);
     }
 }
-window.onload = displayLog;
-

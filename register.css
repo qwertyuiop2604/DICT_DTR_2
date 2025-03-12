@@ -22,6 +22,7 @@ body {
 #registration_word{
         margin-left: 90px;
         font-weight: bold;
+        font-size: 20px;
 }
 
 /* Login Container Styling */
@@ -30,22 +31,26 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    width: 300px;
+    width: 350px;
     display: flex;
     flex-direction: column;
 }
 /*first name styling */
 #firstname{
-    margin-top: 20px;
-    font-size: 12px;
-    font-weight: bold;
+    display: block;
+    font-weight: 600;
+    color: #333;
+  
+    margin-top: 15px;
 
 }
 /*from last name to confirm password title styling*/
 #lastname{
-    margin-top: 10px;
-    font-size: 12px;
-    font-weight: bold;
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-top: 15px;
+
 }
 
 /*all input box styling*/
@@ -54,7 +59,8 @@ input {
     padding: 10px;
     border: 1px solid #02284f;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 12px;
+    
 }
 /*error massage below the input box */
 .error-message {
@@ -72,11 +78,12 @@ button {
     border-radius: 20px;
     margin-top: 20px;
     margin-left: 110px;
-    font-size: 12px;
+    font-size: 12\5px;
     cursor: pointer;
+    justify-self: auto;
 }
 button:hover {
-    background-color: blue;
+    background-color: rgb(48, 48, 119);
 }
 
 /*log in class*/
