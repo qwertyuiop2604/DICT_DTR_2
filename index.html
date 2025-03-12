@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <script type="module" src="index.js"></script>
+
     <div class="login-container">
         <img src="images/logo.png" alt="Government Agency Logo" class="logo">
         <form id="loginForm">
@@ -25,9 +28,9 @@
             <div class="form-actions">
                 <a href="#" class="forgot-password">Forgot Password?</a>
                 <button type="submit" class="login-btn">Login</button>
-                <a href="#" class="registration">Don't have an account? Register here</a>
-            </div>
+                <a href="#" class="registration" id="registration">Don't have an account? Register here</a>
 
+            </div>
             
         </form>
         <div class="footer-links">
@@ -35,7 +38,18 @@
         </div>
     </div>
 
-    <script type="module" src="index.js"></script>
+         <div class="popup_error">
+                <h2>Something went wrong. Please try again.</h2>
+                <img  src="/images/secure-messaging.png">
+                <p>Verify you email address.</p>
+                <label id="label1">Please click on the link</label>
+                <label> in the email we just sent you to confirm your email address</label>
+                <div>
+                    <button id="btn_ok" type="button ">Ok</button>
+                </div>
+            </div>
+
+    
 
 </body>
-</html>
+</html
