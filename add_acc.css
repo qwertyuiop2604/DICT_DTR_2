@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 40px;
+    background-color: #02284f;
+}
+.container {
+    background: white;
+    width: 400px;
+    padding: 20px;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+img{
+width: 40%;
+margin-left: 30%;
+}
+h2 {
+    margin-bottom: 30px;
+    margin-left: 25%;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+input, select {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+/*error massage below the input box */
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+.buttons {
+    display: flex;
+    margin-left: 30%;
+}
+.save-btn {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+.cancel-btn {
+    background-color: #ccc;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+}

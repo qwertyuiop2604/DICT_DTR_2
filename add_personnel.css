@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 40px;
+    background-color: #02284f;
+}
+.container {
+    background: white;
+    width: 400px;
+    padding: 20px;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+img{
+width: 40%;
+margin-left: 30%;
+}
+h2 {
+    margin-bottom: 20px;
+    margin-left: 25%;
+}
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 15px;
+}
+input{
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+select{
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+/*error massage below the input box */
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+#save{
+    display: flex;
+    margin-left: 40%;
+    margin-top: 10%;;
+    border-radius: 5px;
+}
+.blurred{
+    filter:blur(2px);
+    pointer-events: none;
+}
+.popup{
+    display: none;
+    width: 200px;
+    height: 200px;
+    background: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 0 20px 20px;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.popup img{
+    width: 50px;
+    margin-top: -25px;
+    margin-left: 0%;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+}
+.popup h2{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 20px 0 10px;
+}
+#btn_ok{
+    width: 20%;
+    margin-top: 20px;
+    padding: 5px 0;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    margin-left: 0%;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: blue;
+    color: white;
+}
+.save-btn {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+.cancel-btn {
+    background-color: #ccc;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+}

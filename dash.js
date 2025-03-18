@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -20,6 +21,11 @@ const db = getFirestore(app);
 console.log("Firebase initialized successfully!");
 
 // Function to record time
+=======
+
+
+
+>>>>>>> 9386fb55e03ec3a6d4e9bc1ef5d191472ecdd08b
 function recordTime(type) {
     const name = document.getElementById('name').value.trim();
     const employeeNumber = document.getElementById('employeeNumber').value.trim();
@@ -41,9 +47,12 @@ function recordTime(type) {
     showModal(`${type.toUpperCase()} RECORDED AT: ${timeString}`);
 }
 
+<<<<<<< HEAD
 // Expose function globally
 window.recordTime = recordTime;
 
+=======
+>>>>>>> 9386fb55e03ec3a6d4e9bc1ef5d191472ecdd08b
 function showModal(message) {
     document.getElementById('modalMessage').innerText = message;
     document.getElementById('timeModal').style.display = 'block';
@@ -53,9 +62,12 @@ function closeModal() {
     document.getElementById('timeModal').style.display = 'none';
 }
 
+<<<<<<< HEAD
 // Expose function globally
 window.closeModal = closeModal;
 
+=======
+>>>>>>> 9386fb55e03ec3a6d4e9bc1ef5d191472ecdd08b
 function displayLog() {
     let logData = localStorage.getItem('timeLog');
     logData = logData ? JSON.parse(logData) : [];
@@ -67,14 +79,21 @@ function displayLog() {
 
     let logHTML = "";
     logData.forEach((entry, index) => {
+<<<<<<< HEAD
         logHTML += `<div><strong>${index + 1}. ${entry.name} (ID: ${entry.employeeNumber})</strong> - ${entry.action}: ${entry.time}</div>`;
+=======
+        logHTML += `<div><strong>${index + 1}. ${entry.name}</strong> (ID: ${entry.employeeNumber}) - ${entry.action}: ${entry.time}</div>`;
+>>>>>>> 9386fb55e03ec3a6d4e9bc1ef5d191472ecdd08b
     });
 
     document.getElementById('log').innerHTML = logHTML;
 }
 
+<<<<<<< HEAD
 window.onload = displayLog;
 
+=======
+>>>>>>> 9386fb55e03ec3a6d4e9bc1ef5d191472ecdd08b
 function clearLog() {
     if (confirm("Are you sure you want to clear all records?")) {
         localStorage.removeItem('timeLog');
@@ -82,7 +101,10 @@ function clearLog() {
     }
 }
 
+<<<<<<< HEAD
 // Dropdown button event listener
+=======
+>>>>>>> 9386fb55e03ec3a6d4e9bc1ef5d191472ecdd08b
 document.querySelectorAll(".dropdown-btn").forEach((btn) => {
     btn.addEventListener("click", function () {
         this.parentElement.classList.toggle("active");
@@ -99,9 +121,12 @@ function exportFile(format) {
     document.querySelector(".custom-dropdown").classList.remove("active");
 }
 
+<<<<<<< HEAD
 // Expose function globally
 window.exportFile = exportFile;
 
+=======
+>>>>>>> 9386fb55e03ec3a6d4e9bc1ef5d191472ecdd08b
 function exportToExcel() {
     let logData = localStorage.getItem('timeLog');
     logData = logData ? JSON.parse(logData) : [];
@@ -156,6 +181,7 @@ function exportToPDF() {
     };
 }
 
+<<<<<<< HEAD
 // Function to fetch user data from Firestore
 async function fetchUserData(userId) {
     try {
@@ -175,3 +201,6 @@ async function fetchUserData(userId) {
         console.error("Error fetching user data:", error);
     }
 }
+=======
+window.onload = displayLog;
+>>>>>>> 9386fb55e03ec3a6d4e9bc1ef5d191472ecdd08b

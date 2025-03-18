@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/add_personnel.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script type="module" src="add_personnel.js"></script>
+
+    <div class="container">
+        <img src="images/logo.png">
+        <h2>ADD PERSONNEL</h2>
+        <form>
+            
+                <label id="employeeId">Employee Number</label>
+                <input id="EmployeeId" type="text">
+                <div id="EmployeeIdError" class="error-message"></div>
+            
+                <label id="lastname">Last Name</label>
+                <input id="LastName" type="text">
+                <div id="LastNameError" class="error-message"></div>
+            
+                <label id="firstname">First Name</label>
+                <input id="FirstName" type="text">
+                <div id="FirstNameError" class="error-message"></div>
+        
+            
+                <label id="middlename">Middle Name</label>
+                <input id="MiddleName" type="text">
+                <div id="MiddleNameError" class="error-message"></div>
+            
+                <label id="extensionname">Extension Name</label>
+                <input id="Extensionname" type="text">
+        
+                <label id ="email">Email *</label>
+                <input id="Email" type="email">
+                <div id="EmailError" class="error-message"></div>
+            
+                <label id="position">Position *</label>
+                <select id="Position">
+                    <option value="">Select Position</option>
+                </select>
+                <div id="PositionError" class="error-message"></div>
+    
+                <button type="submit" class="save-btn" id="save">✔ Save</button>
+            
+        </form>
+    </div>
+
+    <div class="popup">
+        <img  src="/images/check.png">
+        <h2>Thank You!</h2>
+        <p>Your details has been sucessfully submitted.</p>
+        <button id="btn_ok" type="button ">Ok</button>
+    </div>
+</body>
+</html>
