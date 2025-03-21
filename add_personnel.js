@@ -77,6 +77,8 @@ inputs.forEach(input => {
         const emailValue = email.value.trim();
         const positionValue = positionSelect.value.trim();
 
+        
+
         // Validation checks
         let hasError = false;
         if (!employeeIdValue) document.getElementById('EmployeeIdError').textContent = "Employee Id is required.", hasError = true;

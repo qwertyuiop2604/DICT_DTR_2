@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    color: white;
+   
+}
+
+.logo img {
+    width: 150px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+}
+
+
+.admin {
+    margin-left: auto;
+    margin-right: 20px;
+    color: #002b5c;
+    
+}
+
+.profile-icon {
+    font-size: 24px;
+}
+
+.container {
+    padding: 20px;
+    background: white;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.path{
+    padding: 1px;
+    background: #002b5c;
+    margin: 20px;
+  
+
+}
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+}
+
+.tabs button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #002b5c;
+}
+
+.tabs .active {
+    font-weight: bold;
+    border-bottom: 3px solid #002b5c;
+}
+
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 10px 0;
+}
+
+.search {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.add-account {
+    background-color: #002b5c;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-account:hover {
+    background-color: #004080;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #002b5c;
+    color: white;
+}
+
+.edit, .remove {
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  
+    
+}
+
+.edit {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.remove {
+    background-color: #d9534f;
+    color: white;
+}
+
+.edit:hover {
+    background-color: #45a049;
+}
+
+.remove:hover {
+    background-color: #c9302c;
+}
+
+.path {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin: 20px;
+    padding: 10px;
+    background: #002b5c;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.path a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.path img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.separator {
+    margin: 0 10px;
+    color: white;
+    
+}
+
+.path span {
+    color: white;
+}
