@@ -49,3 +49,13 @@ async function fetchUserAccounts() {
 
 // Fetch data on page load
 window.onload = fetchUserAccounts;
+
+//Add account button
+document.addEventListener("DOMContentLoaded", () => {
+    const addAccountButton = document.querySelector(".add-account");
+
+    addAccountButton.addEventListener("click", () => {
+        // Navigate to the add_acc page
+        window.location.href = "add_acc.html";
+    });
+});

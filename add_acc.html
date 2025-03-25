@@ -3,65 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADD ACCOUNT</title>
+    <title>Add Account</title>
     <link rel="stylesheet" href="/add_acc.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <script type="module" src="add_acc.js"></script>
+    <div class="header">
+        <div class="logo">
+            <img src="images/logo.png">
+        </div>
+        <div class="admin">WELCOME DICT VIGAN ADMIN</div>
+        <div class="profile-icon">&#128100;</div>
+    </div>
+
+    <div class="path">
+        <a href="dash.html">
+            <img src="images/home-icon.png" alt="Home"> 
+        </a>
+        <span class="separator">&gt;</span>
+        <span>Account</span>
+        <span class="separator">&gt;</span>
+        <span>Add Account</span>
+    </div>
 
     <div class="container">
-        <img src="images/logo.png">
-        <h2>ADD ACCOUNT</h2>
+        <h2>Add User Account</h2>
         <form>
-            <div class="form-group">
-                <label for="EmployeeId">Employee Number *</label>
-                <input id="EmployeeId" type="text">
-                <div id="EmployeeNumberError" class="error-message"></div>
+            <!-- 1st Column: Personnel Profile -->
+            <div class="column">
+                <h3>PERSONAL DETAILS</h3>
+                <div class="form-group">
+                    <label for="employeeId">Employee Number *</label>
+                    <input id="employeeId" type="text" placeholder="e.g., #4568">
+                    <div id="EmployeeIdError" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="firstname">First Name *</label>
+                    <input id="firstname" type="text" placeholder="First Name">
+                    <div id="FirstNameError" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="middlename">Middle Name</label>
+                    <input id="middlename" type="text" placeholder="Middle Name">
+                    <div id="MiddleNameError" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name *</label>
+                    <input id="lastname" type="text" placeholder="Last Name">
+                    <div id="LastNameError" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="extensionname">Extension Name</label>
+                    <input id="extensionname" type="text" placeholder="e.g., Jr, II">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="lastname">Last Name *</label>
-                <input id="lastname" type="text">
-                <div id="LastNameError" class="error-message"></div>
+
+            <!-- 2nd Column: Account Details -->
+            <div class="column">
+                <h3>ACCOUNT DETAILS</h3>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input id="email" type="email" placeholder="email@example.com">
+                    <div id="EmailError" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="position">Position *</label>
+                    <select id="position">
+                        <option value="">Select Position</option>
+                        <option value="Electronics and Communications Equipment Technician">Electronics and Communications Equipment Technician</option>
+                        <option value="Project Development Officer">Project Development Officer</option>
+                        <option value="Planning Assistant">Planning Assistant</option>
+                        <option value="Information Technology Officer">Information Technology Officer</option>
+                        <option value="Information Systems Analyst">Information Systems Analyst</option>
+                    </select>
+                    <div id="PositionError" class="error-message"></div>
+                </div>
+                <div class="note">
+                    <p>Note: The default password is the Employee Number.</p>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="firstname">First Name *</label>
-                <input id="firstname" type="text">
-                <div id="FirstNameError" class="error-message"></div>
+
+            <!-- 3rd Column: User Type -->
+            <div class="column">
+                <h3>USER TYPE </h3>
+                <div class="form-group">
+            
+                    <select id="usertype">
+                        <option value="">Select User Type</option>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <div id="UsertypeError" class="error-message"></div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="middlename">Middle Name</label>
-                <input id="middlename" type="text">
-                <div id="MiddleNameError" class="error-message"></div>
-            </div>
-            <div class="form-group">
-                <label for="extensionname">Extension Name</label>
-                <input id="extensionname" type="text">
-            </div>
-            <div class="form-group">
-                <label for="email">Email *</label>
-                <input id="email" type="email">
-                <div id="EmailError" class="error-message"></div>
-            </div>
-            <div class="form-group">
-                <label for="position">Position *</label>
-                <div id="PositionError" class="error-message"></div>
-                <select id="position">
-                    <option value="">Select Position</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="password">Password *</label>
-                <input id="password" type="password">
-                <div id="PasswordError" class="error-message"></div>
-            </div>
+
+            <!-- Submit Button -->
             <div class="buttons">
-                <button type="submit" class="save-btn" id="save">✔ Save</button>
-                <button type="button" class="cancel-btn" id="cancel">Cancel</button>
+                <button type="submit" class="save-btn">Submit</button>
             </div>
         </form>
     </div>
+
+    <div class="overlay" id="popup">
+        <div class="popup">
+          <div class="icon"><i class="fas fa-check-circle"></i></div>
+          <h2>Success</h2>
+          <p>Successfully added a new account!</p>
+          <button id="closePopupBtn">OK</button> <!-- The id matches exactly -->
+        </div>
+      </div>
+
+
+      <div class="overlay_error" id="popup_error">
+        <div class="popup_error">
+          <div class="icon"><i class="fas fa-times-circle"></i></div> <!-- FontAwesome icon for error -->
+          <h2>Error</h2>
+          <p>This email is already in use.</p>
+          <button id="closePopup_error">OK</button> <!-- Corrected id -->
+        </div>
+      </div>
+
+      
+      
+  
+    <script type="module" src="add_acc.js"></script>
 </body>
 </html>
