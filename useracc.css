@@ -31,16 +31,112 @@ body {
 }
 
 .admin {
-    margin-left: auto;
-    margin-right: 20px;
-    color: #002b5c;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Adjust position if needed */
+    gap: 10px; /* Space between text and icon */
+    font-family: Arial, sans-serif;
+    font-size: 14px; /* Adjust text size */
+    color: #002b5c; /* Matches your site theme */
+    margin-right: 30px;
 }
 
 .profile-icon {
     font-size: 24px;
     margin-right: 20px;
+    color: #002b5c;
 }
 
+.navbar {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+}
+ 
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+.navbar li {
+    position: relative;
+    margin: 0 15px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #002b5c;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+.navbar a:hover {
+    border-radius: 5px;
+    color: #004080;
+}
+
+/* Dropdown styles */
+.navbar ul li:hover .dropdown {
+    display: block;
+}
+
+/* Hide dropdown by default */
+.navbar .dropdown {
+    display: none; /* Hide dropdown initially */
+    position: absolute;
+    top: 100%; /* Position below the parent menu */
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    min-width: 150px;
+  }
+
+/* Initially hide the dropdown */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    list-style: none;
+    padding: 5px 0;
+    z-index: 999;
+    min-width: 150px;
+}
+
+.dropdown li {
+    text-align: left;
+}
+
+.dropdown li a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    font-size: 14px;
+}
+
+.dropdown li a:hover {
+    background-color: #f0f0f0;
+    color: #004080;
+}
+
+/* Ensure dropdown appears only when 'active' is added */
+.navbar li.active .dropdown {
+    display: block;
+}
 
 
 .container {
@@ -106,8 +202,10 @@ table {
 table th, table td {
     border: 1px solid #ddd;
     padding: 10px;
-    text-align: left;
+    text-align: center;
+    vertical-align: middle;
 }
+
 
 table th {
     background-color: #002b5c;

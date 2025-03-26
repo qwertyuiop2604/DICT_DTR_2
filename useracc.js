@@ -32,10 +32,14 @@ async function fetchUserAccounts() {
                     <td>${data.lastName || 'N/A'}</td>
                     <td>${data.firstName || 'N/A'}</td>
                     <td>${data.position || 'N/A'}</td>
+                    <td>${data.email || 'N/A'}</td>
                     <td>${data.status || 'N/A'}</td>
                     <td>
-                        <button class="edit">Edit</button>
-                        <button class="remove">Remove</button>
+                       <button class="edit">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="remove">
+                            <i class="fas fa-trash-alt"></i>
                     </td>
                 </tr>
             `;
@@ -59,3 +63,32 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "add_acc.html";
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Select all parent menu items with dropdowns
+    const menuItems = document.querySelectorAll('.navbar li');
+
+    menuItems.forEach((item) => {
+        // Add click event listener to each parent menu
+        item.addEventListener('click', (event) => {
+            // Prevent event bubbling (so clicks inside dropdown don't close it)
+            event.stopPropagation();
+
+            // Close other open dropdowns
+            menuItems.forEach((el) => {
+                if (el !== item) {
+                    el.classList.remove('active');
+                }
+            });
+
+            // Toggle the current dropdown
+            item.classList.toggle('active');
+        });
+    });
+
+    // Close dropdown if clicking outside the menu
+    document.addEventListener('click', () => {
+        menuItems.forEach((item) => item.classList.remove('active'));
+    });
+});
+

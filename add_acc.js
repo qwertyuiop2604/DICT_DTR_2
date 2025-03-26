@@ -60,13 +60,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let hasError = false;
 
     // Validate fields
-    hasError |= showError(employeeId, "EmployeeIdError", "Employee Number is required.");
-    hasError |= showError(firstname, "FirstNameError", "First Name is required.");
-    hasError |= showError(middlename, "MiddleNameError", "Middle Name is required.");
-    hasError |= showError(lastname, "LastNameError", "Last Name is required.");
-    hasError |= showError(email, "EmailError", "Email is required.");
-    hasError |= showError(position, "PositionError", "Position is required.");
-    hasError |= showError(usertype, "UsertypeError", "User Type is required.");
+    hasError |= showError(employeeId, "EmployeeIdError", "Employee Number cannot be blank.");
+    hasError |= showError(firstname, "FirstNameError", "First Name cannot be blank.");
+    hasError |= showError(middlename, "MiddleNameError", "Middle Name cannot be blank.");
+    hasError |= showError(lastname, "LastNameError", "Last Name cannot be blank.");
+    hasError |= showError(email, "EmailError", "Email cannot be blank.");
+    hasError |= showError(position, "PositionError", "Position cannot be blank.");
+    hasError |= showError(usertype, "UsertypeError", "User Type cannot be blank");
 
     // Stop if validation fails
     if (hasError) return;

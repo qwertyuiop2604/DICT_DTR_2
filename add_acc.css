@@ -215,15 +215,15 @@ input, select {
 /* Styling for error messages */
 .error-message {
     color: red;
-    font-size: 0.6em;
-    margin-top: 4px;
+    font-size: 0.7em;
+    margin-top: 5px;
     display: none; /* Initially hidden */
   }
   
   /* Highlight input/select fields with errors */
   .input-error {
-    border: 2px solid red;
-    background-color: #ffe6e6; /* Light red background */
+    border: 1px solid red;
+    background-color: #ffffff; /* Light red background */
   }
 
 
