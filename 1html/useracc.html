@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accounts</title>
+    <link rel="stylesheet" href="/3css/useracc.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+          <img src="/images/logo.png" alt="Logo">
+        </div>
+        <nav class="navbar">
+          <ul>
+            <li>
+              <a href="#">HOME</a>
+            </li>
+            <li class="dropdown-parent">
+              <a href="#">USER MANAGEMENT
+                <span class="dropdown-icon">▼</span> <!-- Add dropdown icon -->
+              </a>
+              <ul class="dropdown">
+                <li><a href="#">Personnel</a></li>
+                <li><a href="#">User Accounts</a></li>
+              </ul>
+            </li>
+            <div class="admin">
+                WELCOME, DICT ADMIN (ADMIN)
+                <div class="profile-icon">
+                    <i class="fa fa-user-circle"></i> <!-- Font Awesome Profile Icon -->
+                </div>
+            </div>
+            
+        </div>
+          </ul>
+        </nav>
+      </header>
+    <!-- Main Content -->
+    <div class="container">
+        <div class="tabs">
+            <button id="employee-tab" class="active">Employee Accounts</button>
+            <button id="removed-tab">Deactivated Accounts</button>
+        </div>
+        
+        <!-- Employee Accounts Section -->
+        <div id="employee-accounts">
+            <div class="actions">
+                <input type="text" placeholder="Search" class="search">
+                <button class="add-account">
+                    <i class="fas fa-plus"></i> ADD ACCOUNT
+                </button>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>EMPLOYEE NO.</th>
+                        <th>LAST NAME</th>
+                        <th>FIRST NAME</th>
+                        <th>POSITION</th>
+                        <th>EMAIL</th>
+                        <th>STATUS</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody id="accounts-table-body">
+                    <!-- Firebase data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Removed Accounts Section -->
+        <div id="removed-accounts" style="display: none;">
+            <h3>Removed Accounts</h3>
+            <p>No removed accounts yet.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript File -->
+    <script type="module" src="/2js/useracc.js"></script>
+</body>
+</html>

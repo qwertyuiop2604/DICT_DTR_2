@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    margin-top: 120px; /* Add spacing to prevent content overlap with fixed header */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    color: white;
+    background-color: #f4f4f4; /* Add background color */
+    position: fixed; /* Fix the header at the top */
+    top: 0; /* Stick to the top of the viewport */
+    left: 0; /* Align to the left edge */
+    width: 100%; /* Make it span the full width of the viewport */
+    z-index: 1000; /* Ensure it stays above other elements */
+    border-bottom: 1px solid #ccc; /* Add a bottom border */
+}
+
+.logo img {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin-left: 20px;
+}
+
+.admin {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Adjust position if needed */
+    gap: 10px; /* Space between text and icon */
+    font-family: Arial, sans-serif;
+    font-size: 14px; /* Adjust text size */
+    color: #002b5c; /* Matches your site theme */
+    margin-right: 30px;
+}
+
+.profile-icon {
+    font-size: 24px;
+    margin-right: 20px;
+    color: #002b5c;
+}
+
+.navbar {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+}
+ 
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+.navbar li {
+    position: relative;
+    margin: 0 15px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #002b5c;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+.navbar a:hover {
+    border-radius: 5px;
+    color: #004080;
+}
+
+/* Dropdown styles */
+.navbar ul li:hover .dropdown {
+    display: block;
+}
+
+/* Hide dropdown by default */
+.navbar .dropdown {
+    display: none; /* Hide dropdown initially */
+    position: absolute;
+    top: 100%; /* Position below the parent menu */
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    min-width: 150px;
+  }
+
+/* Initially hide the dropdown */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    list-style: none;
+    padding: 5px 0;
+    z-index: 999;
+    min-width: 150px;
+}
+
+.dropdown li {
+    text-align: left;
+}
+
+.dropdown li a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    font-size: 14px;
+}
+
+.dropdown li a:hover {
+    background-color: #f0f0f0;
+    color: #004080;
+}
+
+/* Ensure dropdown appears only when 'active' is added */
+.navbar li.active .dropdown {
+    display: block;
+}
+
+
+.container {
+    padding: 20px;
+    background: white;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+}
+
+.tabs button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #002b5c;
+}
+
+.tabs .active {
+    font-weight: bold;
+    border-bottom: 3px solid #002b5c;
+}
+
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 10px 0;
+}
+
+.search {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.add-account {
+    background-color: #002b5c;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-account:hover {
+    background-color: #004080;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+table th {
+    background-color: #002b5c;
+    color: white;
+}
+
+.edit, .remove {
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  
+    
+}
+
+.edit {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.remove {
+    background-color: #d9534f;
+    color: white;
+}
+
+.edit:hover {
+    background-color: #45a049;
+}
+
+.remove:hover {
+    background-color: #c9302c;
+}
+
+.path {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin: 20px;
+    padding: 10px;
+    background: #002b5c;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.path a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.path img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.separator {
+    margin: 0 10px;
+    color: white;
+    
+}
+
+.path span {
+    color: white;
+}

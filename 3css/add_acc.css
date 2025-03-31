@@ -1,82 +1,139 @@
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    margin-top: 120px; /* Add spacing to prevent content overlap with fixed header */
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  margin-top: 120px; /* Add spacing to prevent content overlap with fixed header */
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    color: white;
-    background-color: #f4f4f4; /* Add background color */
-    position: fixed; /* Fix the header at the top */
-    top: 0; /* Stick to the top of the viewport */
-    left: 0; /* Align to the left edge */
-    width: 100%; /* Make it span the full width of the viewport */
-    z-index: 1000; /* Ensure it stays above other elements */
-    border-bottom: 1px solid #ccc; /* Add a bottom border */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  color: white;
+  background-color: #f4f4f4; /* Add background color */
+  position: fixed; /* Fix the header at the top */
+  top: 0; /* Stick to the top of the viewport */
+  left: 0; /* Align to the left edge */
+  width: 100%; /* Make it span the full width of the viewport */
+  z-index: 1000; /* Ensure it stays above other elements */
+  border-bottom: 1px solid #ccc; /* Add a bottom border */
 }
 
-
 .logo img {
-    width: 150px;
-    height: auto;
-    display: block;
-    margin-left: 20px;
+  width: 150px;
+  height: auto;
+  display: block;
+  margin-left: 20px;
 }
 
 .admin {
-    margin-left: auto;
-    margin-right: 20px;
-    color: #002b5c;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Adjust position if needed */
+  gap: 10px; /* Space between text and icon */
+  font-family: Arial, sans-serif;
+  font-size: 14px; /* Adjust text size */
+  color: #002b5c; /* Matches your site theme */
+  margin-right: 30px;
 }
 
 .profile-icon {
-    font-size: 24px;
-    margin-right: 20px;
+  font-size: 24px;
+  margin-right: 20px;
+  color: #002b5c;
 }
 
-
-
-.path {
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    margin: 20px auto; /* Centers it vertically */
-    padding: 10px 20px; /* Adds side padding for inner content */
-    background: #002b5c;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: calc(100% - 40px); /* Full width minus 20px padding on both sides */
-    max-width: 1200px; /* Optional: Limits the maximum width for larger screens */
-    box-sizing: border-box; /* Ensures padding is included in width */
+.navbar {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
 }
 
-
-.path a {
-    text-decoration: none;
-    color: white;
-    display: flex;
-    align-items: center;
+.navbar ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
 }
 
-.path img {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
+.navbar li {
+  position: relative;
+  margin: 0 15px;
 }
 
-.separator {
-    margin: 0 10px;
-    color: white;
+.navbar a {
+  text-decoration: none;
+  color: #002b5c;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 5px 10px;
 }
 
-.path span {
-    color: white;
+.navbar a:hover {
+  border-radius: 5px;
+  color: #004080;
+}
+
+/* Dropdown styles */
+.navbar ul li:hover .dropdown {
+  display: block;
+}
+
+/* Hide dropdown by default */
+.navbar .dropdown {
+  display: none; /* Hide dropdown initially */
+  position: absolute;
+  top: 100%; /* Position below the parent menu */
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  list-style: none;
+  padding: 10px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  min-width: 150px;
+}
+
+/* Initially hide the dropdown */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  list-style: none;
+  padding: 5px 0;
+  z-index: 999;
+  min-width: 150px;
+}
+
+.dropdown li {
+  text-align: left;
+}
+
+.dropdown li a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  font-size: 14px;
+}
+
+.dropdown li a:hover {
+  background-color: #f0f0f0;
+  color: #004080;
+}
+
+/* Ensure dropdown appears only when 'active' is added */
+.navbar li.active .dropdown {
+  display: block;
 }
 
 .container {

@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = "TemporaryPassword123"; // You can replace this with a generated or user-defined password.
     const position = document.getElementById("position");
     const usertype = document.getElementById("usertype");
+    
 
     // Helper function to show error
     const showError = (input, errorId, message) => {
@@ -79,7 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
       lastname: lastname.value.trim(),
       email: email.value.trim(),
       position: position.value.trim(),
-      usertype: usertype.value.trim()
+      usertype: usertype.value.trim(),
+      status: "Pending"
     };
 
     console.log("Form submitted successfully:", formData);

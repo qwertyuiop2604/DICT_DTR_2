@@ -86,9 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Close dropdown if clicking outside the menu
-    document.addEventListener('click', () => {
-        menuItems.forEach((item) => item.classList.remove('active'));
-    });
+
 });
 

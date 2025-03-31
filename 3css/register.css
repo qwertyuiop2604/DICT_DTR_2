@@ -62,6 +62,11 @@ input {
     font-size: 12px;
     
 }
+
+.input-error {
+    border: 1px solid red;
+    background-color: #ffffff; /* Light red background */
+  }
 /*error massage below the input box */
 .error-message {
     color: red;

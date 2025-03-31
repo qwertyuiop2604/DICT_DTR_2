@@ -1,14 +1,15 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAWnrqJZ3ih5ZVwm8kmTW6VPW1WHzuSe98",
-  authDomain: "dict-dtr.firebaseapp.com",
-  projectId: "dict-dtr",
-  storageBucket: "dict-dtr.appspot.com",
-  messagingSenderId: "813571675102",
-  appId: "1:813571675102:web:c985fef4b1bac2c4f2c34f"
+    apiKey: "AIzaSyAWnrqJZ3ih5ZVwm8kmTW6VPW1WHzuSe98",
+    authDomain: "dict-dtr.firebaseapp.com",
+    projectId: "dict-dtr",
+    storageBucket: "dict-dtr.appspot.com",
+    messagingSenderId: "813571675102",
+    appId: "1:813571675102:web:c985fef4b1bac2c4f2c34f"
 };
 
 // Initialize Firebase
@@ -17,44 +18,47 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 const popup = document.querySelector('.popup_error');
-const loginContainer = document.querySelector('.login-container');  // The login form
+const loginContainer = document.querySelector('.login-container');
 const btn_ok = document.getElementById('btn_ok');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 const registrationLink = document.getElementById('registration');
 
-
 console.log("Firebase initialized successfully!");
 
- // Initially hide the popup container
- popup.style.display = 'none';
+// Initially hide the popup container
+popup.style.display = 'none';
 
 // Ensure script runs after DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("loginForm").addEventListener("submit", function (event) {
         event.preventDefault(); // Prevent form from submitting
 
-        let email = document.getElementById("email").value.trim();
-        let password = document.getElementById("password").value.trim();
+        let email = emailInput.value.trim();
+        let password = passwordInput.value.trim();
 
         let emailError = document.getElementById("emailError");
         let passwordError = document.getElementById("passwordError");
 
-        // Clear previous error messages
+        // Clear previous error messages and remove error styles
         emailError.textContent = "";
         passwordError.textContent = "";
+        emailInput.classList.remove("input-error");
+        passwordInput.classList.remove("input-error");
 
         let isValid = true;
 
         // Validate email
         if (email === "") {
             emailError.textContent = "Field is required";
+            emailInput.classList.add("input-error"); // Add red border
             isValid = false;
         }
 
         // Validate password
         if (password === "") {
             passwordError.textContent = "Field is required";
+            passwordInput.classList.add("input-error"); // Add red border
             isValid = false;
         }
 
@@ -78,21 +82,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
                 .catch((error) => {
                     console.error("Login failed:", error.message);
-                    
+
                     // Show appropriate error messages
                     if (error.code === "auth/user-not-found") {
                         emailError.textContent = "User not found.";
+                        emailInput.classList.add("input-error"); // Add red border
                     } else if (error.code === "auth/wrong-password") {
                         passwordError.textContent = "Incorrect password.";
+                        passwordInput.classList.add("input-error"); // Add red border
                     } else {
                         passwordError.textContent = "Invalid email or password.";
+                        emailInput.classList.add("input-error"); // Add red border
+                        passwordInput.classList.add("input-error"); // Add red border
                     }
                 });
         }
     });
 
-      // Handle registration link click
-      registrationLink.addEventListener('click', () => {
+    // Handle registration link click
+    registrationLink.addEventListener('click', () => {
         window.location.href = 'register.html'; // Redirect to the register page
     });
 
@@ -102,5 +110,4 @@ document.addEventListener("DOMContentLoaded", function () {
         emailInput.value = '';  // Clear email input
         passwordInput.value = '';  // Clear password input
     });
-
 });

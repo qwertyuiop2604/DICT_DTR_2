@@ -49,6 +49,21 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
+    transition: border-color 0.3s ease; /* Smooth transition */
+}
+
+/* Error Styles for Inputs */
+.input-error {
+    border: 1px solid red !important; /* Add thicker border */
+    background-color: #fff8f8; /* Light red background */
+}
+
+/* Error Message Styling */
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
 }
 
 /* Buttons and Actions */
@@ -101,6 +116,52 @@ body {
     text-decoration: underline;
 }
 
+/* Popup Styling */
+.popup_error {
+    width: 400px;
+    height: 280px;
+    background: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 20px;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.popup_error img {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.popup_error h2 {
+    font-size: 16px;
+    font-weight: 500;
+    color: red;
+    margin: 10px 0;
+}
+
+#btn_ok {
+    width: 100px;
+    padding: 5px 0;
+    border: 0;
+    outline: none;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+    margin-top: 10px;
+}
+
+.blurred {
+    filter: blur(2px);
+    pointer-events: none;
+}
+
 /* Responsive Design */
 @media (max-width: 480px) {
     .login-container {
@@ -115,58 +176,4 @@ body {
     .forgot-password {
         font-size: 0.85rem;
     }
-}
-.error-message {
-    color: red;
-    font-size: 10px;
-    display: block;
-}
-
-.popup_error{
-    width: 400px;
-    height: 280px;
-    background: #fff;
-    border-radius: 6px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    padding: 0 20px 20px;
-    color: #333;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-.popup_error img{
-    width: 80px;
-    margin-bottom: 0%;
-}
-.popup_error h2{
-    font-size: 14px;
-    font-weight: 500;
-    width: 300px;
-    background-color: rgb(243, 225, 225);
-    color: red;
-    margin-left: 50px;
-    border-radius: 4px;
-}
-#btn_ok{
-    width: 20%;
-    margin-top: 20px;
-    padding: 5px 0;
-    border: 0;
-    outline: none;
-    font-size: 18px;
-    margin-left: 0%;
-    border-radius: 4px;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    background-color: blue;
-    color: white;
-}
-#label1{
-    font-weight: bold;
-}
-.blurred{
-    filter:blur(2px);
-    pointer-events: none;
 }
