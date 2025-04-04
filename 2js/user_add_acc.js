@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore, doc, setDoc, collection } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // Firebase configuration
@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const firstname = document.getElementById("firstname");
     const middlename = document.getElementById("middlename");
     const lastname = document.getElementById("lastname");
+    const extensioname = document.getElementById("extensionname");
     const email = document.getElementById("email");
     const password = "TemporaryPassword123"; // You can replace this with a generated or user-defined password.
     const position = document.getElementById("position");
@@ -78,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
       firstname: firstname.value.trim(),
       middlename: middlename.value.trim(),
       lastname: lastname.value.trim(),
+      extensioname:extensioname.value.trim(),
       email: email.value.trim(),
       position: position.value.trim(),
       usertype: usertype.value.trim(),
@@ -88,8 +90,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       await createUserWithEmailAndPassword(auth, formData.email, password);
-      const userDoc = doc(collection(db, "users"), formData.employeeId);
-      await setDoc(userDoc, formData);
+
+// Send email verification
+const user = auth.currentUser;
+if (user) {
+  await sendEmailVerification(user);
+  console.log("Verification email sent.");
+}
+
+const userDoc = doc(collection(db, "users"), formData.employeeId);
+await setDoc(userDoc, formData);
+
 
       console.log("User created and data saved successfully!");
       popup.classList.add("active");

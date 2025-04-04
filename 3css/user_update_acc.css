@@ -1,0 +1,414 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    margin-top: 120px; /* Add spacing to prevent content overlap with fixed header */
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    color: white;
+    background-color: #f4f4f4; /* Add background color */
+    position: fixed; /* Fix the header at the top */
+    top: 0; /* Stick to the top of the viewport */
+    left: 0; /* Align to the left edge */
+    width: 100%; /* Make it span the full width of the viewport */
+    z-index: 1000; /* Ensure it stays above other elements */
+    border-bottom: 1px solid #ccc; /* Add a bottom border */
+  }
+  
+  .logo img {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin-left: 20px;
+  }
+  
+  .admin {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Adjust position if needed */
+    gap: 10px; /* Space between text and icon */
+    font-family: Arial, sans-serif;
+    font-size: 14px; /* Adjust text size */
+    color: #002b5c; /* Matches your site theme */
+    margin-right: 30px;
+  }
+  
+  .profile-icon {
+    font-size: 24px;
+    margin-right: 20px;
+    color: #002b5c;
+  }
+  
+  .navbar {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+  }
+  
+  .navbar li {
+    position: relative;
+    margin: 0 15px;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: #002b5c;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  
+  .navbar a:hover {
+    border-radius: 5px;
+    color: #004080;
+  }
+  
+  /* Dropdown styles */
+  .navbar ul li:hover .dropdown {
+    display: block;
+  }
+  
+  /* Hide dropdown by default */
+  .navbar .dropdown {
+    display: none; /* Hide dropdown initially */
+    position: absolute;
+    top: 100%; /* Position below the parent menu */
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    min-width: 150px;
+  }
+  
+  /* Initially hide the dropdown */
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    list-style: none;
+    padding: 5px 0;
+    z-index: 999;
+    min-width: 150px;
+  }
+  
+  .dropdown li {
+    text-align: left;
+  }
+  
+  .dropdown li a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .dropdown li a:hover {
+    background-color: #f0f0f0;
+    color: #004080;
+  }
+  
+  /* Ensure dropdown appears only when 'active' is added */
+  .navbar li.active .dropdown {
+    display: block;
+  }
+  
+  .container {
+      width: calc(100% - 40px); /* Full width minus 20px padding on both sides */
+      max-width: 1200px; /* Optional: Limit max width for larger screens */
+      margin: 20px auto; /* Center it vertically and horizontally */
+      background: white;
+      padding: 20px; /* Padding inside the container */
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow for better design */
+      box-sizing: border-box; /* Ensure padding is included in total width */
+  }
+  
+  h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #02284f;
+  }
+  
+  form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+      gap: 20px;
+      padding: 0 10px; /* Add padding to keep inputs away from edges */
+     
+  }
+  
+  .column {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      border-top: 2px solid #002b5c;
+  }
+  
+  h3 {
+      margin-top: 0;
+      color: #02284f;
+      font-weight: 600;
+  }
+  
+  .form-group {
+      margin-bottom: 15px;
+      padding: 0 10px; /* Add padding for inputs within the container */
+  }
+  
+  label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 5px;
+      color: #333;
+  }
+  
+  input, select {
+      width: 100%; /* Full width of parent */
+      box-sizing: border-box; /* Include padding/border in width */
+      padding: 10px;
+      margin: 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+  }
+  
+  .note p {
+      font-size: 12px;
+      color: #555;
+      margin-top: 10px;
+  }
+  
+  .buttons {
+      grid-column: 1 / -1; /* Span all columns */
+      text-align: center;
+      margin-top: 20px;
+  }
+  
+  .save-btn {
+      background-color: #02284f;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+  }
+  
+  .save-btn:hover {
+      background-color: #014077;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+      .header {
+          flex-direction: column;
+          align-items: flex-start;
+      }
+  
+      .path {
+          flex-wrap: wrap;
+          font-size: 16px;
+          margin: 10px auto;
+      }
+  
+      form {
+          grid-template-columns: 1fr; /* Single column for smaller screens */
+          padding: 0 15px;
+      }
+  
+      .container {
+          padding: 15px;
+          margin: 10px;
+      }
+  
+      .column {
+          padding: 15px;
+      }
+  }
+  
+  @media (max-width: 480px) {
+      .path {
+          font-size: 14px;
+          padding: 15px;
+          margin: 10px;
+      }
+  
+      input, select {
+          padding: 8px;
+          font-size: 12px;
+      }
+  
+      .save-btn {
+          padding: 8px 15px;
+          font-size: 14px;
+      }
+  }
+  
+  /* Styling for error messages */
+  .error-message {
+      color: red;
+      font-size: 0.7em;
+      margin-top: 5px;
+      display: none; /* Initially hidden */
+    }
+    
+    /* Highlight input/select fields with errors */
+    .input-error {
+      border: 1px solid red;
+      background-color: #ffffff; /* Light red background */
+    }
+  
+  
+   /*Success Pop up*/
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s, opacity 0.3s ease-in-out;
+    }
+  
+    .popup {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+  
+    .popup .icon {
+      font-size: 50px;
+      color: #02284f; /* Green color for the FontAwesome icon */
+      margin-bottom: 10px;
+    }
+  
+    .popup h2 {
+      margin: 0;
+      font-size: 24px;
+      color: #333;
+    }
+  
+    .popup p {
+      font-size: 14px;
+      color: #666;
+      margin: 10px 0 20px;
+    }
+  
+    .popup button {
+      background: #02284f;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition:  0.3s ease;
+    }
+  
+    .popup button:hover {
+      background: #014077;
+    }
+  
+    .overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+  
+     /*Error Pop up*/
+     .overlay_error {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s, opacity 0.3s ease-in-out;
+    }
+  
+    .popup_error {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+  
+    .popup_error .icon {
+      font-size: 50px;
+      color: #ff4d4f; /* Red color for the FontAwesome icon */
+      margin-bottom: 10px;
+    }
+  
+    .popup_error h2 {
+      margin: 0;
+      font-size: 24px;
+      color: #02284f; /* Match the error theme color */
+    }
+  
+    .popup_error p {
+      font-size: 14px;
+      color: #666;
+      margin: 10px 0 20px;
+    }
+  
+    .popup_error button {
+      background: #02284f; /* Match the error theme color */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+  
+    .popup_error button:hover {
+      background: #014077;
+    }
+  
+    .overlay_error.active {
+      visibility: visible;
+      opacity: 1;
+    }
+  
+    
+  

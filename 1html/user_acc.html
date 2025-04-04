@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accounts</title>
-    <link rel="stylesheet" href="/3css/useracc.css">
+    <link rel="stylesheet" href="/3css/user_acc.css">
 </head>
 <body>
     <!-- Header Section -->
@@ -33,11 +33,9 @@
                     <i class="fa fa-user-circle"></i> <!-- Font Awesome Profile Icon -->
                 </div>
             </div>
-            
-        </div>
-          </ul>
         </nav>
       </header>
+
     <!-- Main Content -->
     <div class="container">
         <div class="tabs">
@@ -58,8 +56,7 @@
                 <thead>
                     <tr>
                         <th>EMPLOYEE NO.</th>
-                        <th>LAST NAME</th>
-                        <th>FIRST NAME</th>
+                        <th> NAME</th>
                         <th>POSITION</th>
                         <th>EMAIL</th>
                         <th>STATUS</th>
@@ -79,7 +76,32 @@
         </div>
     </div>
 
+    <!-- Deactivation Popup -->
+    <div class="overlay_deactivate" id="popup_deactivate">
+        <div class="popup_deactivate">
+            <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <h2>Deactivate Account</h2>
+            <p>Are you sure you want to deactivate this account? This action cannot be undone.</p>
+            <div class="buttons">
+                <button class="cancel" onclick="closePopupDeactivate()">Cancel</button>
+                <button class="deactivate" onclick="deactivateAccount()">Deactivate</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Deactivation Success Popup -->
+
+    <div class="overlay_d_success" id="d_success">
+      <div class="d_success">
+        <div class="icon"><i class="fas fa-check-circle"></i></div> <!-- Success icon -->
+        <h2>Success</h2>
+        <p>The account has been successfully deactivated.</p>
+        <button onclick="closeD_Success()">OK</button>
+      </div>
+    </div>
+
     <!-- JavaScript File -->
-    <script type="module" src="/2js/useracc.js"></script>
+    <script type="module" src="/2js/user_acc.js"></script>
 </body>
 </html>

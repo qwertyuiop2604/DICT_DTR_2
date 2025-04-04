@@ -239,36 +239,144 @@ table th {
     background-color: #c9302c;
 }
 
-.path {
+
+.overlay_deactivate {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
+    justify-content: center;
     align-items: center;
-    font-size: 18px;
-    margin: 20px;
-    padding: 10px;
-    background: #002b5c;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+  }
 
-.path a {
-    text-decoration: none;
-    color: white;
+  .popup_deactivate {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .popup_deactivate .icon {
+    font-size: 50px;
+    color: #ffcc00; /* Warning color */
+    margin-bottom: 10px;
+  }
+
+  .popup_deactivate h2 {
+    margin: 0;
+    font-size: 22px;
+    color: #333;
+  }
+
+  .popup_deactivate p {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0 20px;
+  }
+
+  .popup_deactivate .buttons {
     display: flex;
+    justify-content: space-around;
+  }
+
+  .popup_deactivate button {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .popup_deactivate .cancel {
+    background: #ccc;
+    color: #333;
+  }
+
+  .popup_deactivate .cancel:hover {
+    background: #b3b3b3;
+  }
+
+  .popup_deactivate .deactivate {
+    background: #d9534f;
+    color: white;
+  }
+
+  .popup_deactivate .deactivate:hover {
+    background: #c9302c;
+  }
+
+  .overlay_deactivate.active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .overlay_d_success {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
     align-items: center;
-}
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+  }
 
-.path img {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-}
+  .d_success {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
 
-.separator {
-    margin: 0 10px;
+  .d_success .icon {
+    font-size: 50px;
+    color: #28a745; /* Green for success */
+    margin-bottom: 10px;
+  }
+
+  .d_success h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #02284f;
+  }
+
+  .d_success p {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0 20px;
+  }
+
+  .d_success button {
+    background: #02284f;
     color: white;
-    
-}
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
 
-.path span {
-    color: white;
-}
+  .d_success button:hover {
+    background: #014077;
+  }
+
+  .overlay_d_success.active {
+    visibility: visible;
+    opacity: 1;
+  }

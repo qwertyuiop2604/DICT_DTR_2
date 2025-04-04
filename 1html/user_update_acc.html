@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Account</title>
-    <link rel="stylesheet" href="/3css/add_acc.css"/>
+    <link rel="stylesheet" href="/3css/user_update_acc.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -15,19 +15,19 @@
     <header class="header">
         <div class="logo">
           <img src="/images/logo.png" alt="Logo">
-        </div>
+        </div> 
         <nav class="navbar">
           <ul>
             <li>
-              <a href="#">HOME</a>
+              <a href="/1html/dash.html">HOME</a>
             </li>
             <li class="dropdown-parent">
               <a href="#">USER MANAGEMENT
                 <span class="dropdown-icon">▼</span> <!-- Add dropdown icon -->
               </a>
               <ul class="dropdown">
-                <li><a href="#">Personnel</a></li>
-                <li><a href="useracc.html">User Accounts</a></li>
+                <li><a href= "/1html/personnel.html">Personnel</a></li>
+                <li><a href="/1html/user_acc.html">User Accounts</a></li>
               </ul>
             </li>
             <div class="admin">
@@ -43,7 +43,7 @@
       </header>
 
     <div class="container">
-        <h2>Add User Account</h2>
+        <h2>UPDATE USER ACCOUNT</h2>
         <form>
             <!-- 1st Column: Personnel Profile -->
             <div class="column">
@@ -59,8 +59,8 @@
                     <div id="FirstNameError" class="error-message"></div>
                 </div>
                 <div class="form-group">
-                    <label for="middlename">Middle Name</label>
-                    <input id="middlename" type="text" placeholder="Middle Name">
+                    <label for="middlename">Middle Initial</label>
+                    <input id="middlename" type="text" placeholder="Middle Initial">
                     <div id="MiddleNameError" class="error-message"></div>
                 </div>
                 <div class="form-group">
@@ -115,7 +115,7 @@
 
             <!-- Submit Button -->
             <div class="buttons">
-                <button type="submit" class="save-btn">Submit</button>
+                <button type="submit" class="save-btn">Update</button>
             </div>
         </form>
     </div>
@@ -124,7 +124,7 @@
         <div class="popup">
           <div class="icon"><i class="fas fa-check-circle"></i></div>
           <h2>Success</h2>
-          <p>Successfully added a new account!</p>
+          <p>Successfully updated an account!</p>
           <button id="closePopupBtn">OK</button> <!-- The id matches exactly -->
         </div>
       </div>
@@ -134,7 +134,7 @@
         <div class="popup_error">
           <div class="icon"><i class="fas fa-times-circle"></i></div> <!-- FontAwesome icon for error -->
           <h2>Error</h2>
-          <p>This email is already in use.</p>
+          <p>There was an error in updating the account. Please try again</p>
           <button id="closePopup_error">OK</button> <!-- Corrected id -->
         </div>
       </div>
@@ -142,6 +142,6 @@
       
       
   
-    <script type="module" src="/2js/add_acc.js"></script>
+    <script type="module" src="/2js/user_update_acc.js"></script>
 </body>
 </html>
