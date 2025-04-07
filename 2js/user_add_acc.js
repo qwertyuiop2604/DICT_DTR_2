@@ -25,6 +25,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const popup_error = document.getElementById("popup_error");
   const closePopupErrorBtn = document.getElementById("closePopup_error"); // Correctly selects the error popup button
 
+    // Input fields to be converted to uppercase
+    const fieldsToUppercase = [
+      "employeeId",
+      "firstname",
+      "middlename",
+      "lastname",
+      "extensionname",
+      "position",
+      "usertype"
+    ];
+  
+    // Convert input to uppercase
+    fieldsToUppercase.forEach(fieldId => {
+      const field = document.getElementById(fieldId);
+      if (field) {
+        field.addEventListener("input", () => {
+          field.value = field.value.toUpperCase();
+        });
+      }
+    });
+
   
   form.addEventListener("submit", async (event) => {
     event.preventDefault(); // Prevent default form submission

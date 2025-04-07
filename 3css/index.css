@@ -116,52 +116,6 @@ body {
     text-decoration: underline;
 }
 
-/* Popup Styling */
-.popup_error {
-    width: 400px;
-    height: 280px;
-    background: #fff;
-    border-radius: 6px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    padding: 20px;
-    color: #333;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-
-.popup_error img {
-    width: 80px;
-    margin-bottom: 10px;
-}
-
-.popup_error h2 {
-    font-size: 16px;
-    font-weight: 500;
-    color: red;
-    margin: 10px 0;
-}
-
-#btn_ok {
-    width: 100px;
-    padding: 5px 0;
-    border: 0;
-    outline: none;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: blue;
-    color: white;
-    margin-top: 10px;
-}
-
-.blurred {
-    filter: blur(2px);
-    pointer-events: none;
-}
-
 /* Responsive Design */
 @media (max-width: 480px) {
     .login-container {
@@ -177,3 +131,178 @@ body {
         font-size: 0.85rem;
     }
 }
+
+/* Not verified pop up*/
+
+.overlay_not_verified {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+  }
+
+  .popup_not_verified {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .popup_not_verified .icon {
+    font-size: 50px;
+    color: #ff9900;
+    margin-bottom: 10px;
+  }
+
+  .popup_not_verified h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #cc3300;
+  }
+
+  .popup_not_verified p {
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0 20px;
+  }
+
+  .popup_not_verified button {
+    background: #cc3300;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .popup_not_verified button:hover {
+    background: #a82900;
+  }
+
+  .overlay_not_verified.active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+/* Loading Popup Styles */
+.overlay_loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+    z-index: 999;
+  }
+  
+  .overlay_loading.active {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .popup_loading {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 30px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+  
+  .popup_loading .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #ccc;
+    border-top-color: #02284f;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .overlay_user_not_found {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+  }
+
+  .popup_user_not_found {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .popup_user_not_found .icon {
+    font-size: 50px;
+    color: #ff9900;
+    margin-bottom: 10px;
+  }
+
+  .popup_user_not_found h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #cc3300;
+  }
+
+  .popup_user_not_found p {
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0 20px;
+  }
+
+  .popup_user_not_found button {
+    background: #cc3300;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .popup_user_not_found button:hover {
+    background: #a82900;
+  }
+
+  .overlay_user_not_found.active {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+
+

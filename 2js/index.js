@@ -17,17 +17,19 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const popup = document.querySelector('.popup_error');
+const popup_not_verified = document.getElementById('popup_not_verified');
+const btn_ok_not_verified = document.getElementById('btn_ok_not_verified');
+const popup_loading = document.getElementById('popup_loading');
 const loginContainer = document.querySelector('.login-container');
-const btn_ok = document.getElementById('btn_ok');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 const registrationLink = document.getElementById('registration');
 
-console.log("Firebase initialized successfully!");
+// New elements for User Not Found popup
+const popup_user_not_found = document.getElementById('popup_user_not_found');
+const btn_ok_user_not_found = document.getElementById('btn_ok_user_not_found');
 
-// Initially hide the popup container
-popup.style.display = 'none';
+console.log("Firebase initialized successfully!");
 
 // Ensure script runs after DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
@@ -51,63 +53,72 @@ document.addEventListener("DOMContentLoaded", function () {
         // Validate email
         if (email === "") {
             emailError.textContent = "Field is required";
-            emailInput.classList.add("input-error"); // Add red border
+            emailInput.classList.add("input-error");
             isValid = false;
         }
 
         // Validate password
         if (password === "") {
             passwordError.textContent = "Field is required";
-            passwordInput.classList.add("input-error"); // Add red border
+            passwordInput.classList.add("input-error");
             isValid = false;
         }
 
         // If all fields are valid, attempt login
         if (isValid) {
+            popup_loading.classList.add('active'); // Show loading
+
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    const user = userCredential.user;
+                    popup_loading.classList.remove('active'); // Hide loading
 
-                    // Check if email is verified
+                    const user = userCredential.user;
                     if (user.emailVerified) {
-                        // Successful login and email is verified
                         alert("Login successful!");
                         console.log("User logged in:", user);
                         window.location.href = "dash.html"; // Redirect to dashboard
                     } else {
-                        // Email is not verified, show a notification
+                        // Email is not verified
                         loginContainer.classList.add('blurred');
-                        popup.style.display = 'block';
+                        popup_not_verified.classList.add('active');
                     }
                 })
                 .catch((error) => {
+                    popup_loading.classList.remove('active'); // Hide loading
+
                     console.error("Login failed:", error.message);
 
-                    // Show appropriate error messages
                     if (error.code === "auth/user-not-found") {
                         emailError.textContent = "User not found.";
-                        emailInput.classList.add("input-error"); // Add red border
+                        emailInput.classList.add("input-error");
+                        // Show user not found popup
+                        loginContainer.classList.add('blurred');
+                        popup_user_not_found.classList.add('active');
                     } else if (error.code === "auth/wrong-password") {
                         passwordError.textContent = "Incorrect password.";
-                        passwordInput.classList.add("input-error"); // Add red border
+                        passwordInput.classList.add("input-error");
                     } else {
                         passwordError.textContent = "Invalid email or password.";
-                        emailInput.classList.add("input-error"); // Add red border
-                        passwordInput.classList.add("input-error"); // Add red border
+                        emailInput.classList.add("input-error");
+                        passwordInput.classList.add("input-error");
                     }
                 });
         }
     });
 
-    // Handle registration link click
-    registrationLink.addEventListener('click', () => {
-        window.location.href = 'register.html'; // Redirect to the register page
+    // Close the 'Email Not Verified' popup
+    btn_ok_not_verified.addEventListener('click', () => {
+        loginContainer.classList.remove('blurred');
+        popup_not_verified.classList.remove('active');
+        emailInput.value = '';
+        passwordInput.value = '';
     });
 
-    btn_ok.addEventListener('click', () => {
+    // Close the 'User Not Found' popup
+    btn_ok_user_not_found.addEventListener('click', () => {
         loginContainer.classList.remove('blurred');
-        popup.style.display = 'none';
-        emailInput.value = '';  // Clear email input
-        passwordInput.value = '';  // Clear password input
+        popup_user_not_found.classList.remove('active');
+        emailInput.value = '';
+        passwordInput.value = '';
     });
 });

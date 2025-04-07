@@ -28,7 +28,7 @@
             <div class="form-actions">
                 <a href="#" class="forgot-password">Forgot Password?</a>
                 <button type="submit" class="login-btn">Login</button>
-                <a href="register.html" class="registration" id="registration">Don't have an account? Register here</a>
+            
 
             </div>
             
@@ -38,16 +38,33 @@
         </div>
     </div>
 
-         <div class="popup_error">
-                <h2>Something went wrong. Please try again.</h2>
-                <img  src="/images/secure-messaging.png">
-                <p>Verify you email address.</p>
-                <label id="label1">Please click on the link</label>
-                <label> in the email we just sent you to confirm your email address</label>
-                <div>
-                    <button id="btn_ok" type="button ">Ok</button>
-                </div>
-            </div>
+    <div class="overlay_not_verified" id="popup_not_verified">
+        <div class="popup_not_verified">
+          <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
+          <h2>Email Not Verified</h2>
+          <p>Your email address has not been verified yet. Please check your inbox and follow the verification link.</p>
+          <button id="btn_ok_not_verified">OK</button>
+        </div>
+      </div>
+
+      <!-- Loading Popup -->
+<div class="overlay_loading" id="popup_loading">
+    <div class="popup_loading">
+      <div class="spinner"></div>
+      <p>Logging in, please wait...</p>
+    </div>
+  </div>
+
+  <div class="overlay_user_not_found" id="popup_user_not_found">
+    <div class="popup_user_not_found">
+      <div class="icon"><i class="fas fa-user-times"></i></div>
+      <h2>User Not Found</h2>
+      <p>The account you are trying to access does not exist. Please check your information and try again.</p>
+      <button onclick="closePopup_user_not_found()">OK</button>
+    </div>
+  </div>
+  
+      
 
     
 

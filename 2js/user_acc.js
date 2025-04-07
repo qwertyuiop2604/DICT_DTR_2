@@ -17,7 +17,9 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    
+    document.getElementById('addAccountButton').addEventListener('click', function() {
+        window.location.href = '/1html/user_add_acc.html'; // Navigate to the user_add_acc page
+    });
 
     document.querySelector('.add-account').addEventListener('click', function() {
     window.location.href = `/1html/user_update_acc.html?id=${employeeId}`;
@@ -30,6 +32,8 @@
         const en = extensionname ? `, ${extensionname}` : "";
         return `${fn} ${mn} ${ln}${en}`.trim();
     }
+
+
     
     
     async function fetchUserAccounts() {
@@ -50,13 +54,13 @@
                 let userStatus = "Pending"; 
 
                 // Check if the authenticated user is in Firestore
-                if (
-                    auth.currentUser &&
-                    auth.currentUser.email === data.email &&
-                    auth.currentUser.emailVerified
-                ) {
-                    userStatus = "Active";
-                }
+               // if (
+                //    auth.currentUser &&
+                 //   auth.currentUser.email === data.email &&
+                 //   auth.currentUser.emailVerified
+              //  ) {
+                //    userStatus = "Active";
+               // }
                 
 
                 const row = document.createElement("tr");

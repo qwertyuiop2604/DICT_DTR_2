@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Email Not Verified</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+
+    .overlay_not_verified {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s, opacity 0.3s ease-in-out;
+    }
+
+    .popup_not_verified {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .popup_not_verified .icon {
+      font-size: 50px;
+      color: #ff9900;
+      margin-bottom: 10px;
+    }
+
+    .popup_not_verified h2 {
+      margin: 0;
+      font-size: 24px;
+      color: #cc3300;
+    }
+
+    .popup_not_verified p {
+      font-size: 14px;
+      color: #555;
+      margin: 10px 0 20px;
+    }
+
+    .popup_not_verified button {
+      background: #cc3300;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .popup_not_verified button:hover {
+      background: #a82900;
+    }
+
+    .overlay_not_verified.active {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="overlay_not_verified" id="popup_not_verified">
+  <div class="popup_not_verified">
+    <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
+    <h2>Email Not Verified</h2>
+    <p>Your email address has not been verified yet. Please check your inbox and follow the verification link.</p>
+    <button onclick="closePopup_not_verified()">OK</button>
+  </div>
+</div>
+
+<script>
+  const popup_not_verified = document.getElementById('popup_not_verified');
+
+  function showPopup_not_verified() {
+    popup_not_verified.classList.add('active');
+  }
+
+  function closePopup_not_verified() {
+    popup_not_verified.classList.remove('active');
+  }
+
+  // Automatically show the popup
+  window.onload = () => {
+    showPopup_not_verified();
+  };
+</script>
+
+</body>
+</html>
