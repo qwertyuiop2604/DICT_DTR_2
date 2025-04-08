@@ -3,10 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Email Not Verified</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <title>Change Password Popup</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -14,97 +18,129 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #f0f0f0;
+      background-color: rgba(0, 0, 0, 0.5);
     }
 
-    .overlay_not_verified {
+    .overlay_changePassword {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
       display: flex;
       justify-content: center;
       align-items: center;
-      visibility: hidden;
-      opacity: 0;
-      transition: visibility 0s, opacity 0.3s ease-in-out;
     }
 
-    .popup_not_verified {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      width: 320px;
+    .popup_changePassword {
+      background: #fff;
+      border-radius: 16px;
+      padding: 30px 24px;
+      width: 100%;
+      max-width: 400px;
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }
 
-    .popup_not_verified .icon {
-      font-size: 50px;
-      color: #ff9900;
+    .popup_changePassword .icon {
+      font-size: 48px;
+      color: #02284f;
       margin-bottom: 10px;
     }
 
-    .popup_not_verified h2 {
-      margin: 0;
-      font-size: 24px;
-      color: #cc3300;
+    .popup_changePassword h2 {
+      margin: 0 0 24px;
+      font-size: 22px;
+      color: #02284f;
+      font-weight: 600;
     }
 
-    .popup_not_verified p {
-      font-size: 14px;
-      color: #555;
-      margin: 10px 0 20px;
+    .popup_changePassword input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 15px;
     }
 
-    .popup_not_verified button {
-      background: #cc3300;
-      color: white;
+    .popup_changePassword .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .popup_changePassword button {
+      flex: 1;
+      padding: 12px 0;
+      border-radius: 10px;
       border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-size: 16px;
+      font-size: 15px;
+      font-weight: 500;
       cursor: pointer;
       transition: 0.3s ease;
     }
 
-    .popup_not_verified button:hover {
-      background: #a82900;
+    .popup_changePassword button.cancel {
+      background: #ccc;
+      color: #333;
     }
 
-    .overlay_not_verified.active {
-      visibility: visible;
-      opacity: 1;
+    .popup_changePassword button.cancel:hover {
+      background: #bbb;
+    }
+
+    .popup_changePassword button.confirm {
+      background: #02284f;
+      color: white;
+    }
+
+    .popup_changePassword button.confirm:hover {
+      background: #014077;
     }
   </style>
 </head>
 <body>
 
-<div class="overlay_not_verified" id="popup_not_verified">
-  <div class="popup_not_verified">
-    <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
-    <h2>Email Not Verified</h2>
-    <p>Your email address has not been verified yet. Please check your inbox and follow the verification link.</p>
-    <button onclick="closePopup_not_verified()">OK</button>
+<div class="overlay_changePassword" id="popup_changePassword">
+  <div class="popup_changePassword">
+    <div class="icon"><i class="fas fa-lock"></i></div>
+    <h2>Change Password</h2>
+    <input type="password" placeholder="New Password" id="newPassword" />
+    <input type="password" placeholder="Confirm Password" id="confirmPassword" />
+    <div class="buttons">
+      <button class="cancel" onclick="closePopup_changePassword()">Cancel</button>
+      <button class="confirm" onclick="confirmPasswordChange()">Confirm</button>
+    </div>
   </div>
 </div>
 
 <script>
-  const popup_not_verified = document.getElementById('popup_not_verified');
-
-  function showPopup_not_verified() {
-    popup_not_verified.classList.add('active');
+  function closePopup_changePassword() {
+    document.getElementById('popup_changePassword').style.display = 'none';
   }
 
-  function closePopup_not_verified() {
-    popup_not_verified.classList.remove('active');
+  function confirmPasswordChange() {
+    const newPass = document.getElementById('newPassword').value;
+    const confirm = document.getElementById('confirmPassword').value;
+
+    if (!newPass || !confirm) {
+      alert('Please fill in both password fields.');
+      return;
+    }
+
+    if (newPass !== confirm) {
+      alert('Passwords do not match.');
+      return;
+    }
+
+    alert('Password changed successfully!');
+    closePopup_changePassword();
   }
 
-  // Automatically show the popup
+  // Show popup on page load for demo
   window.onload = () => {
-    showPopup_not_verified();
+    document.getElementById('popup_changePassword').style.display = 'flex';
   };
 </script>
 

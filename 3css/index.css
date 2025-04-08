@@ -66,6 +66,8 @@ body {
     margin-top: 5px;
 }
 
+
+
 /* Buttons and Actions */
 .form-actions {
     display: flex;
@@ -242,67 +244,230 @@ body {
     }
   }
 
-  .overlay_user_not_found {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.3s ease-in-out;
-  }
+  /* Loading Popup Styles for Resending Email */
+.overlay_loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s ease-in-out;
+  z-index: 999;
+}
 
-  .popup_user_not_found {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    width: 320px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  }
+.overlay_loading.active {
+  visibility: visible;
+  opacity: 1;
+}
 
-  .popup_user_not_found .icon {
-    font-size: 50px;
-    color: #ff9900;
-    margin-bottom: 10px;
-  }
+.popup_loading {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 30px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
 
-  .popup_user_not_found h2 {
-    margin: 0;
-    font-size: 24px;
-    color: #cc3300;
-  }
+.popup_loading .spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ccc;
+  border-top-color: #02284f;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px;
+}
 
-  .popup_user_not_found p {
-    font-size: 14px;
-    color: #555;
-    margin: 10px 0 20px;
-  }
+/* Email Sent Success Popup */
+.overlay_sent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s ease-in-out;
+  z-index: 1000;
+}
 
-  .popup_user_not_found button {
-    background: #cc3300;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s ease;
-  }
+.overlay_sent.active {
+  visibility: visible;
+  opacity: 1;
+}
 
-  .popup_user_not_found button:hover {
-    background: #a82900;
-  }
+.popup_sent {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 30px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
 
-  .overlay_user_not_found.active {
-    visibility: visible;
-    opacity: 1;
-  }
-  
+.popup_sent .icon {
+  font-size: 40px;
+  color: #28a745; /* Green icon for success */
+  margin-bottom: 10px;
+}
 
+.popup_sent h2 {
+  font-size: 22px;
+  color: #333;
+}
+
+.popup_sent p {
+  font-size: 16px;
+  color: #555;
+}
+
+.popup_sent button {
+  background-color: #02284f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+.popup_sent button:hover {
+  background-color: #0056b3;
+}
+
+/* Keyframe for Spinner Animation */
+@keyframes spin {
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+.overlay_changePassword {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4); /* darken background */
+  backdrop-filter: blur(3px); /* blur background */
+  z-index: 999;
+  transition: all 0.3s ease;
+  opacity: 0; /* Initially hidden */
+  pointer-events: none; /* Initially disabled */
+}
+
+.overlay_changePassword.active {
+  opacity: 1; /* Make it visible */
+  pointer-events: auto; /* Enable interaction */
+}
+
+.popup_changePassword {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px 24px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+}
+
+.popup_changePassword .icon {
+  font-size: 48px;
+  color: #02284f;
+  margin-bottom: 10px;
+}
+
+.popup_changePassword h2 {
+  margin: 0 0 24px;
+  font-size: 22px;
+  color: #02284f;
+  font-weight: 600;
+}
+
+.popup_changePassword input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.popup_changePassword .buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.popup_changePassword button {
+  flex: 1;
+  padding: 12px 0;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.popup_changePassword button.cancel {
+  background: #ccc;
+  color: #333;
+}
+
+.popup_changePassword button.cancel:hover {
+  background: #bbb;
+}
+
+.popup_changePassword button.confirm {
+  background: #02284f;
+  color: white;
+}
+
+.popup_changePassword button.confirm:hover {
+  background: #014077;
+}
+
+.popup_changePassword label {
+  display: block;
+  font-size: 14px;
+  color: #02284f;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.popup_changePassword .input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align inputs and labels to the left */
+  width: 100%;
+}
+
+.popup_changePassword input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  box-sizing: border-box;
+}
 

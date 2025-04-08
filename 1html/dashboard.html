@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/3css/dashboard.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <img src="/images/logo.png" alt="Logo">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="dash.html">HOME</a></li>
+                <li><a href="report.html">REPORTS</a></li>
+                <li class="dropdown-parent">
+                    <a href="#">USER MANAGEMENT <span class="dropdown-icon">▼</span></a>
+                    <ul class="dropdown">
+                        <li><a href="personnel.html">Personnel</a></li>
+                        <li><a href="user_acc.html">User Accounts</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="admin">
+                WELCOME, DICT ADMIN (ADMIN)
+                <div class="profile-icon"><i class="fa fa-user-circle"></i></div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2><i class="fa-regular fa-clock"></i> DAILY TIME RECORD</h2>
+        
+        <input type="text" id="name" placeholder="Enter your name" required>
+      
+
+        <div class="buttons">
+            <button class="time-in" onclick="recordTime('in')"><i class="fa-solid fa-sign-in-alt"></i> Time In</button>
+            <button class="time-out" onclick="recordTime('out')"><i class="fa-solid fa-sign-out-alt"></i> Time Out</button>
+            <div class="custom-dropdown">
+                <button class="dropdown-btn">Export <i class="fa-solid fa-chevron-down"></i></button>
+                <ul class="dropdown-list">
+                    <li onclick="exportFile('excel')">Export as Excel</li>
+                    <li onclick="exportFile('pdf')">Export as PDF</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div id="timeModal" class="modal">
+            <div class="modal-content">
+                <h3 id="modalMessage"></h3>
+                <button class="close-btn" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+        
+
+        <!-- Export and Clear Buttons -->
+        <div class="buttons">
+         
+          
+        </div>
+
+        <div class="log" id="log">No records yet</div>
+    </div>
+   
+
+    <script type="module" src="/2js/dashboard.js"></script>
+</body>
+</html>

@@ -31,9 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
       "firstname",
       "middlename",
       "lastname",
-      "extensionname",
-      "position",
-      "usertype"
+      "extensionname"
+   
     ];
   
     // Convert input to uppercase
@@ -57,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const lastname = document.getElementById("lastname");
     const extensioname = document.getElementById("extensionname");
     const email = document.getElementById("email");
-    const password = "TemporaryPassword123"; // You can replace this with a generated or user-defined password.
+    const password = employeeId.value.trim();; // You can replace this with a generated or user-defined password.
     const position = document.getElementById("position");
     const usertype = document.getElementById("usertype");
     

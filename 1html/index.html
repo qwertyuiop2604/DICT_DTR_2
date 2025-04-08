@@ -7,10 +7,15 @@
     <title>Login</title>
     <link rel="stylesheet" href="/3css/index.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
 </head>
 <body>
 
+
     <script type="module" src="/2js/index.js"></script>
+
 
     <div class="login-container">
         <img src="/images/logo.png" alt="Government Agency Logo" class="logo">
@@ -28,24 +33,37 @@
             <div class="form-actions">
                 <a href="#" class="forgot-password">Forgot Password?</a>
                 <button type="submit" class="login-btn">Login</button>
-            
+           
+
 
             </div>
-            
+           
         </form>
         <div class="footer-links">
             <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a>
         </div>
     </div>
 
+
     <div class="overlay_not_verified" id="popup_not_verified">
-        <div class="popup_not_verified">
-          <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
-          <h2>Email Not Verified</h2>
-          <p>Your email address has not been verified yet. Please check your inbox and follow the verification link.</p>
-          <button id="btn_ok_not_verified">OK</button>
-        </div>
+      <div class="popup_not_verified">
+        <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
+        <h2>Email Not Verified</h2>
+        <p>Your email address has not been verified yet. Please check your inbox and follow the verification link.</p>
+   
+        <!-- Resend verification email link with email icon -->
+        <p>
+          <a href="#" id="resend_verification_link" style="color: #007BFF; text-decoration: underline;">
+            <i class="fas fa-envelope" style="margin-right: 5px;"></i>Resend verification email
+          </a>
+        </p>
+   
+        <button id="btn_ok_not_verified">OK</button>
       </div>
+    </div>
+   
+   
+
 
       <!-- Loading Popup -->
 <div class="overlay_loading" id="popup_loading">
@@ -55,18 +73,46 @@
     </div>
   </div>
 
-  <div class="overlay_user_not_found" id="popup_user_not_found">
-    <div class="popup_user_not_found">
-      <div class="icon"><i class="fas fa-user-times"></i></div>
-      <h2>User Not Found</h2>
-      <p>The account you are trying to access does not exist. Please check your information and try again.</p>
-      <button onclick="closePopup_user_not_found()">OK</button>
+
+  <!-- Loading Popup for Resending Email -->
+<div class="overlay_loading" id="popup_sending_email">
+  <div class="popup_loading">
+    <div class="spinner"></div>
+    <p>Sending verification email...</p>
+  </div>
+</div>
+
+
+<!-- Success Popup for Email Sent -->
+<div class="overlay_sent" id="popup_email_sent">
+  <div class="popup_sent">
+    <div class="icon"><i class="fas fa-check-circle"></i></div>
+    <h2>Email Sent!</h2>
+    <p>Verification email has been resent. Please check your inbox.</p>
+    <button id="btn_ok_email_sent">OK</button>
+  </div>
+</div>
+
+<div class="overlay_changePassword" id="popup_changePassword" style="display: none;">
+  <div class="popup_changePassword">
+    <div class="icon"><i class="fas fa-lock"></i></div>
+    <h2>Change Password</h2>
+    <label for="newpass">New Password:</label>
+    <input type="password"  id="newPassword" />
+    <label for="confpass">Confirm Password:</label>
+    <input type="password" id="confirmPassword" />
+
+    <div id="errorMessageContainer" class="error-message"></div> <!-- Error message container -->
+
+    <div class="buttons">
+      <button class="cancel" onclick="closePopup_changePassword()">Cancel</button>
+      <button class="confirm" onclick="confirmPasswordChange()">Confirm</button>
     </div>
   </div>
-  
-      
+</div>
 
-    
+
 
 </body>
 </html
+
