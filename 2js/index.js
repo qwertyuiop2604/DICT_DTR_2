@@ -95,28 +95,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 const q = query(collection(db, "users"), where("email", "==", user.email));
                 const querySnapshot = await getDocs(q);
 
-                if (!querySnapshot.empty) {
-                    const docSnap = querySnapshot.docs[0];
-                    const userData = docSnap.data();
-                    employeeIdForPasswordUpdate = docSnap.id;
+           // After a successful login
+if (!querySnapshot.empty) {
+    const docSnap = querySnapshot.docs[0];
+    const userData = docSnap.data();
+    employeeIdForPasswordUpdate = docSnap.id; // Save the employeeId for later use
 
+    if (userData.status === "Pending") {
+        const overlay = document.querySelector('.overlay_changePassword');
+        if (overlay) {
+            overlay.classList.add('active');  // Ensure the overlay is visible
+        }
+        if (popup_changePassword) {
+            popup_changePassword.style.display = 'flex'; // Keep this line for popup visibility
+        }
+    } else {
+        alert("Login successful!");
+        // Save the user data or employeeId in localStorage/sessionStorage for use in the dashboard
+        sessionStorage.setItem("employeeId", employeeIdForPasswordUpdate);
+        window.location.href = "dashboard.html";  // Redirect to dashboard
+    }
+} else {
+    console.error("User document not found in Firestore.");
+}
 
-                    if (userData.status === "Pending") {
-                        const overlay = document.querySelector('.overlay_changePassword');
-                        if (overlay) {
-                            overlay.classList.add('active');  // Ensure the overlay is visible
-                        }
-                        if (popup_changePassword) {
-                            popup_changePassword.style.display = 'flex'; // Keep this line for popup visibility
-                        }
-                    
-                    } else {
-                        alert("Login successful!");
-                        window.location.href = "dash.html";
-                    }
-                } else {
-                    console.error("User document not found in Firestore.");
-                }
             } else {
                 loginContainer.classList.add('blurred');
                 popup_not_verified.classList.add('active');
@@ -248,7 +250,7 @@ window.confirmPasswordChange = function () {
                 const userDocRef = doc(db, "users", employeeIdForPasswordUpdate);
                 updateDoc(userDocRef, { status: "Active" }).then(() => {
                     displaySuccess('Password changed successfully!');
-                    window.location.href = "dash.html";
+                    window.location.href = "dashboard.html";
                 }).catch((err) => {
                     console.error("Error updating status:", err);
                     hasError = true;

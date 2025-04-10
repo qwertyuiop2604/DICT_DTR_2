@@ -69,7 +69,7 @@
                     <td>${formatFullName(data.firstname, data.middlename, data.lastname, data.extensionname )}</td>
                     <td>${data.position || 'N/A'}</td>
                     <td>${data.email || 'N/A'}</td>
-                    <td class="user-status">${userStatus}</td>
+                    <td class="user-status">${data.status}</td>
                     <td>
                         <button class="edit" data-user-id="${userId}"><i class="fas fa-edit"></i></button>
                         <button class="remove" data-user-id="${userId}"><i class="fas fa-trash-alt"></i></button>

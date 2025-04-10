@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="/3css/dashboard.css">
+    <script type="module" src="/2js/dashboard.js"></script>
+
 </head>
 <body>
     <!-- Header Section -->
@@ -15,7 +17,7 @@
         </div>
         <nav class="navbar">
             <ul>
-                <li><a href="dash.html">HOME</a></li>
+                <li><a href="dashboard.html">HOME</a></li>
                 <li><a href="report.html">REPORTS</a></li>
                 <li class="dropdown-parent">
                     <a href="#">USER MANAGEMENT <span class="dropdown-icon">▼</span></a>
@@ -35,8 +37,10 @@
     <div class="container">
         <h2><i class="fa-regular fa-clock"></i> DAILY TIME RECORD</h2>
         
-        <input type="text" id="name" placeholder="Enter your name" required>
+        <!-- Name input field (readonly) -->
+        <input type="text" id="name" placeholder="Enter your name" required readonly>
       
+
 
         <div class="buttons">
             <button class="time-in" onclick="recordTime('in')"><i class="fa-solid fa-sign-in-alt"></i> Time In</button>
@@ -48,7 +52,6 @@
                     <li onclick="exportFile('pdf')">Export as PDF</li>
                 </ul>
             </div>
-
         </div>
 
         <div id="timeModal" class="modal">
@@ -67,8 +70,3 @@
 
         <div class="log" id="log">No records yet</div>
     </div>
-   
-
-    <script type="module" src="/2js/dashboard.js"></script>
-</body>
-</html>
