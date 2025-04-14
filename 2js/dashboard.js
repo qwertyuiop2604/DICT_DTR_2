@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { getFirestore, doc, getDoc, query, where, getDocs, collection } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFirestore, doc, getDoc, query, where, getDocs, collection, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -34,9 +34,9 @@ async function setUserName() {
       const userData = userDoc.data();
 
       // Construct the full name (first name + middle name + last name + extension)
-      let fullName = userData.firstName + " " + userData.middleName + " " + userData.lastName;
-      if (userData.extensionName) {
-        fullName += " " + userData.extensionName;
+      let fullName = userData.firstname + " " + userData.middlename + " " + userData.lastname;
+      if (userData.extensionname) {
+        fullName += " " + userData.extensionname;
       }
 
       // Set the input field value (making it readonly)
@@ -72,8 +72,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             const userData = docSnap.data();
 
             // Construct the full name
-            let fullName = `${userData.firstName} ${userData.middleName} ${userData.lastName}`;
-            if (userData.extensionName) {
+            let fullName = `${userData.firstname} ${userData.middlename} ${userData.lastname}`;
+            if (userData.extensionname) {a
                 fullName += ` ${userData.extensionName}`;
             }
 
@@ -86,3 +86,79 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.log("No employeeId found in sessionStorage.");
     }
 });
+
+async function recordTime(type) {
+  const user = auth.currentUser;
+  if (!user) return alert("Not logged in");
+
+  // Use user.uid as the document ID to get the user's data from the "users" collection
+  const userDocRef = doc(db, "users", user.uid); // Document ID is user.uid
+  const userDocSnap = await getDoc(userDocRef);
+
+  // Check if user document exists
+  if (!userDocSnap.exists()) {
+    return alert("User not found in users collection");
+  }
+
+  // Retrieve the employeeId from the document
+  const userData = userDocSnap.data();
+  const employeeId = userData.employeeId;  // This is the field you need
+
+  console.log("Employee ID from users collection:", employeeId);  // Logs the employeeId
+
+  // Now proceed with your DTR logic...
+
+  const now = new Date();
+  const currentHour = now.getHours();
+  const currentMinute = now.getMinutes();
+  const currentTime = now.toTimeString().substring(0, 5); // "HH:MM"
+  const year = now.getFullYear().toString();
+  const month = String(now.getMonth() + 1).padStart(2, '0'); // e.g., "04"
+  const day = String(now.getDate()).padStart(2, '0');        // e.g., "14"
+
+  let field = "";
+
+  // Define time ranges and assign field
+  if (type === "in") {
+    if (currentHour >= 7 && currentHour <= 11) field = "amIn";
+    else if (currentHour === 12 && currentMinute <= 30) field = "amOut";
+    else if (currentHour === 12 && currentMinute > 30 || currentHour === 13 && currentMinute <= 0) field = "pmIn";
+    else if (currentHour >= 13 && currentHour < 18) field = "pmOut";
+    else return alert("Invalid Time In range");
+  }
+
+  if (type === "out") {
+    if (currentHour === 12 && currentMinute <= 30) field = "amOut";
+    else if ((currentHour === 13 && currentMinute >= 1) || currentHour >= 14 && currentHour <= 18) field = "pmOut";
+    else return alert("Invalid Time Out range");
+  }
+
+  // Use employeeId to reference the DTR document for that user
+  const dtrRef = doc(db, "dtrs", employeeId, year, month);
+
+  const dtrSnap = await getDoc(dtrRef);
+  let records = {};
+
+  if (dtrSnap.exists()) {
+    records = dtrSnap.data().records || {};
+  }
+
+  if (!records[day]) records[day] = {};
+  if (records[day][field]) {
+    return alert(`${field} already recorded as ${records[day][field]}`);
+  }
+
+  records[day][field] = currentTime;
+
+  await setDoc(dtrRef, {
+    year: parseInt(year),
+    month: parseInt(month),
+    records: records
+  }, { merge: true });
+
+  alert(`${field} recorded at ${currentTime}`);
+}
+
+
+// Make recordTime globally available
+window.recordTime = recordTime;

@@ -20,7 +20,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 15x;
     color: white;
     background-color: #f4f4f4; /* Add background color */
     position: fixed; /* Fix the header at the top */
@@ -36,6 +36,8 @@ body {
     height: auto;
     display: block;
     margin-left: 20px;
+    margin: 10px;
+    margin-left: 30px;
 }
 
 .admin {
