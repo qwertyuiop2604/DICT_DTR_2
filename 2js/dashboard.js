@@ -65,7 +65,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     const employeeId = sessionStorage.getItem("employeeId");
 
     if (employeeId) {
-        const userDocRef = doc(db, "users", employeeId);
+      const userDocRef = doc(db, "users", user.uid);
+
+
         const docSnap = await getDoc(userDocRef);
 
         if (docSnap.exists()) {
